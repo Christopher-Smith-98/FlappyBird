@@ -19,7 +19,7 @@ void Graphics::CreateBuffer(int wIn, int hIn) {
 }
 
 void Graphics::ClearScreen() {
-	for (int i = 0; i < w * h; i++) screen[i] = L' ';
+
 }
 
 void Graphics::DrawString(int x, int y, String string)

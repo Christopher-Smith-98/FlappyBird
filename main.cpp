@@ -30,7 +30,7 @@ int main()
 		{
 			// Update Snake DirectionFlap
 			input.FlapWings(bird);
-			bird.Move();
+			
 			bird.CheckCollision(graphics, input);
 
 			// Draw screen

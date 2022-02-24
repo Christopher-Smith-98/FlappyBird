@@ -2,6 +2,7 @@
 #include <iostream>
 #include <thread>
 #include <list>
+#include <string>
 #include <Windows.h>
 #include "bird.h"
 #include "pipe.h"
@@ -27,8 +28,8 @@ int main()
 		bird.Reset();
 		while (!bird.bDead)
 		{
-			// Update Snake Direction
-			input.UpdateDirection(bird.direction);
+			// Update Snake DirectionFlap
+			input.FlapWings(bird);
 			bird.Move();
 			bird.CheckCollision(graphics, input);
 
@@ -41,3 +42,42 @@ int main()
 	return 0;
 }
 
+
+
+
+/*
+class FlappyBird
+{
+
+
+
+protected:
+	// Called by olcConsoleGameEngine
+	virtual bool OnUserCreate()
+	{
+		listSection = { 0, 0, 0, 0 };
+		bResetGame = true;
+		fSectionWidth = (float)ScreenWidth() / (float)(listSection.size() - 1);
+		return true;
+	}
+
+	// Called by olcConsoleGameEngine
+	virtual bool OnUserUpdate(float fElapsedTime)
+	{
+		
+
+		return true;
+	}
+};
+
+
+int main()
+{
+	// Use olcConsoleGameEngine derived app
+	FlappyBird game;
+	game.ConstructConsole(80, 48, 16, 16);
+	game.Start();
+
+	return 0;
+}
+*/

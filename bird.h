@@ -11,9 +11,24 @@ class Bird
 {
 public:
 	int nScore;
-	int direction;
-	bool bDead;
-	list<sBirdBody> body;
+
+	float fBirdPosition = 0.0f;
+	float fBirdVelocity = 0.0f;
+	float fBirdAcceleration = 0.0f;
+	float fGravity = 100.0f;
+	float fLevelPosition = 0.0f;
+
+	float fSectionWidth;
+	list<int> listSection;
+
+	int nBirdX = (int)(ScreenWidth() / 3.0f);
+
+	bool bHasCollided = false;
+	bool bResetGame = false;
+
+	int nAttemptCount = 0;
+	int nFlapCount = 0;
+	int nMaxFlapCount = 0;
 
 	void Reset();
 	void Move();

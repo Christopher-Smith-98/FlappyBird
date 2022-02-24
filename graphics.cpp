@@ -24,19 +24,26 @@ void Graphics::ClearScreen() {
 
 void Graphics::DrawString(int x, int y, String string)
 {
-	for (int i = 0; i < w; i++)
-	{
-		screen[i] = L'=';
-		screen[2 * w + i] = L'=';
-	}
-	wsprintf(&screen[h + 5], L" F L A P P Y   B I R D                              SCORE: %d", bird.nScore);
+
 }
 
-void Graphics::DrawBird(Bird bird) {
-	for (auto s : bird.body)
-		screen[s.y * w + s.x] = bird.bDead ? L'+' : L'O';
+void Graphics::DrawBird(Bird bird) 
+{
+	if (fBirdVelocity > 0)
+	{
+		DrawString(nBirdX, fBirdPosition + 0, L"\\\\\\");
+		DrawString(nBirdX, fBirdPosition + 1, L"<\\\\\\=Q");
+	}
+	else
+	{
+		DrawString(nBirdX, fBirdPosition + 0, L"<///=Q");
+		DrawString(nBirdX, fBirdPosition + 1, L"///");
+	}
 
-	screen[bird.body.front().y * w + bird.body.front().x] = bird.bDead ? L'X' : L'@';
+	DrawString(1, 1, L"Attempt: " + to_wstring(nAttemptCount) + L" Score: " + to_wstring(nFlapCount) + L" High Score: " + to_wstring(nMaxFlapCount));
+}
+
+
 }
 
 

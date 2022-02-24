@@ -12,7 +12,7 @@ public:
 	float startingGameTickRate = gameTickRate;
 	float aspectratio = 0.6;
 
-	void UpdateDirection(int& direction);
+	void FlapWings(Bird bird);
 	void WaitForRetry();
 	void Reset();
 };

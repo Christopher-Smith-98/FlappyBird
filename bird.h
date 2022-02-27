@@ -10,27 +10,23 @@ using namespace std;
 class Bird
 {
 public:
-	int nScore;
+	const float fGravity = 100.0f;
+	const float minFallingVelocity = fGravity / 10.0f;
 
-	float fBirdPosition = 0.0f;
-	float fBirdVelocity = 0.0f;
-	float fBirdAcceleration = 0.0f;
-	float fGravity = 100.0f;
-	float fLevelPosition = 0.0f;
-
-	float fSectionWidth;
-	list<int> listSection;
-
-	int nBirdX = (int)(ScreenWidth() / 3.0f);
-
+	int nBirdX;
+	float fBirdPosition;
+	float fBirdVelocity;
+	float fBirdAcceleration;
 	bool bHasCollided = false;
-	bool bResetGame = false;
-
-	int nAttemptCount = 0;
-	int nFlapCount = 0;
+	
 	int nMaxFlapCount = 0;
+	int nAttemptCount;
+	int nFlapCount;
+	bool bResetGame;
 
 	void Reset();
 	void Move();
 	void CheckCollision(Graphics graphics, Input& input);
+	void Flap();
+	void Fall(float fElapsedTime);
 };

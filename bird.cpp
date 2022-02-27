@@ -14,11 +14,11 @@ void Bird::Reset()
 	{
 		bHasCollided = false;
 		bResetGame = false;
-		listSection = { 0, 0, 0, 0 };
 		fBirdAcceleration = 0.0f;
 		fBirdVelocity = 0.0f;
 		fBirdPosition = ScreenHeight() / 2.0f;
 		nFlapCount = 0;
+		bResetGame = false;
 		nAttemptCount++;
 	}
 }
@@ -33,3 +33,17 @@ void Bird::CheckCollision(Graphics graphics, Input& input)
 	
 }
 
+void Bird::Flap() 
+{
+	fBirdAcceleration = 0.0f;
+	fBirdVelocity = -fGravity / 4.0f;
+	nFlapCount++;
+	if (nFlapCount > nMaxFlapCount) {
+		nMaxFlapCount = nFlapCount;
+	}
+}
+
+void Bird::Fall(float fElapsedTime) 
+{
+	fBirdAcceleration += fGravity * fElapsedTime;
+}

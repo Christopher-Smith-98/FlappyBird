@@ -10,25 +10,24 @@ using namespace std;
 
 void Input::FlapWings(Bird bird)
 {
-	if (bHasCollided)
+	// should be fElapsedTime in here... lol
+
+	if (bird.bHasCollided)
 	{
 		// Do nothing until user releases space
-		if (m_keys[VK_SPACE].bReleased)
+		if (m_keys[VK_SPACE].bReleased) { 
 			bResetGame = true;
+		}
 	}
 	else
 	{
 
-		if (m_keys[VK_SPACE].bPressed && fBirdVelocity >= fGravity / 10.0f)
-		{
-			fBirdAcceleration = 0.0f;
-			fBirdVelocity = -fGravity / 4.0f;
-			nFlapCount++;
-			if (nFlapCount > nMaxFlapCount)
-				nMaxFlapCount = nFlapCount;
+		if (m_keys[VK_SPACE].bPressed && bird.fBirdVelocity >= bird.minFallingVelocity) {
+			bird.Flap();
 		}
-		else
-			fBirdAcceleration += fGravity * fElapsedTime;
+		else {
+			bird.Fall(fElapsedTime);
+		}
 
 		if (fBirdAcceleration >= fGravity)
 			fBirdAcceleration = fGravity;

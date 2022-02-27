@@ -26,9 +26,9 @@ int main()
 	{
 
 		bird.Reset();
-		while (!bird.bDead)
+		while (!bird.bHasCollided)
 		{
-			// Update Snake DirectionFlap
+			// Update Bird DirectionFlap
 			input.FlapWings(bird);
 			
 			bird.CheckCollision(graphics, input);

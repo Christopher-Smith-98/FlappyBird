@@ -17,8 +17,6 @@ public:
 	int w;
 	int h;
 
-
-
 	void CreateBuffer(int wIn, int hIn);
 	void ClearScreen();
 	void DrawString(Bird bird);

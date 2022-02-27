@@ -40,10 +40,16 @@ void Pipe::Update(float fElapsedTime)
 
 	if (fLevelPosition > fSectionWidth)
 	{
+		// Move to pick new pipe
 		fLevelPosition -= fSectionWidth;
 		listSection.pop_front();
 		int i = rand() % (ScreenHeight() - 20);
 		if (i <= 10) i = 0;
 		listSection.push_back(i);
 	}
+}
+
+void Pipe::PickNewPipe()
+{
+	// Move to here
 }

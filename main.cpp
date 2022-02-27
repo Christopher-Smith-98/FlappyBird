@@ -13,12 +13,14 @@ using namespace std;
 
 int nScreenWidth = 120;
 int nScreenHeight = 30;
+float frameDelay = 100;   // milliseconds
 
 int main()
 {
 	Input input;
 	Graphics graphics;
 	Bird bird;
+	Pipes pipes;
 
 	graphics.CreateBuffer(nScreenWidth, nScreenHeight);
 
@@ -29,10 +31,12 @@ int main()
 		while (!bird.bHasCollided) //ElapsedTime should be here
 		{
 			// Update Bird DirectionFlap
-			if (input.SpacePressed()) {
+			if (input.AwaitSpacePress(frameDelay)) {
 				bird.Flap();
 			}
-			//do everythings updates
+			// Call update functions
+			bird.Update(frameDelay);
+			pipes.Update(frameDelay);
 			bird.CheckCollision(graphics, input);
 
 			// Draw screen
@@ -42,43 +46,3 @@ int main()
 	}
 	return 0;
 }
-
-
-
-
-/*
-class FlappyBird
-{
-
-
-
-protected:
-	// Called by olcConsoleGameEngine
-	virtual bool OnUserCreate()
-	{
-		listSection = { 0, 0, 0, 0 };
-		bResetGame = true;
-		fSectionWidth = (float)ScreenWidth() / (float)(listSection.size() - 1);
-		return true;
-	}
-
-	// Called by olcConsoleGameEngine
-	virtual bool OnUserUpdate(float fElapsedTime)
-	{
-		
-
-		return true;
-	}
-};
-
-
-int main()
-{
-	// Use olcConsoleGameEngine derived app
-	FlappyBird game;
-	game.ConstructConsole(80, 48, 16, 16);
-	game.Start();
-
-	return 0;
-}
-*/

@@ -25,8 +25,7 @@ public:
 	bool bResetGame;
 
 	void Reset();
-	void Move();
-	void CheckCollision(Graphics graphics, Input& input);
+	void CheckCollision(Graphics graphics);
 	void Flap();
 	void Fall(float fElapsedTime);
 	void Update(float fElapsedTime);

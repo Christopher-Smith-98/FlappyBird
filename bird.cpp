@@ -16,6 +16,8 @@ void Bird::Reset()
 		bResetGame = false;
 		fBirdAcceleration = 0.0f;
 		fBirdVelocity = 0.0f;
+
+		// pass screen height as arugment
 		fBirdPosition = ScreenHeight() / 2.0f;
 		nFlapCount = 0;
 		bResetGame = false;
@@ -23,14 +25,11 @@ void Bird::Reset()
 	}
 }
 
-void Bird::Move()
+void Bird::CheckCollision(Graphics graphics)
 {
-	
-}
+	// ...
 
-void Bird::CheckCollision(Graphics graphics, Input& input)
-{
-	
+	// Put the OLC code here... just reads from graphics.screen
 }
 
 void Bird::Flap() 

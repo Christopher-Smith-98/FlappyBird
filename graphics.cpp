@@ -22,13 +22,16 @@ void Graphics::ClearScreen() {
 
 }
 
-void Graphics::DrawString(int x, int y, String string)
+void Graphics::DrawString(int x, int y, string string)
 {
-
+	// have a go at this function, 
+	// will be using the screen
+	screen[16] = string[0];
 }
 
 void Graphics::DrawBird(Bird bird) 
 {
+	// replace with bird.fBirdVelocity etc.
 	if (fBirdVelocity > 0)
 	{
 		DrawString(nBirdX, fBirdPosition + 0, L"\\\\\\");
@@ -46,6 +49,10 @@ void Graphics::DrawBird(Bird bird)
 
 }
 
+
+void Fill(int x1, int x2, int y1, int y2, char fillChar) {
+	// have a go at making this
+}
 
 
 void Graphics::DrawPlayAgain(Bird bird) {

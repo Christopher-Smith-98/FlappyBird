@@ -8,20 +8,17 @@
 #include "input.h"
 using namespace std;
 
-bool Input::SpacePressed()
+bool Input::AwaitSpacePress(float frameDelay)
 {
-	// should be fElapsedTime in here... lol
+	// Wait some time! Idk, he's done this before in snake!
 
-	/*
-	if (bird.bHasCollided)
-	{
-		// Do nothing until user releases space
-		if (m_keys[VK_SPACE].bReleased) { 
-			bResetGame = true;
-		}
-	}
-	*/
+	// Reuse GetAsyncKeyState, and look for a spacebar press
 
+	// Wait 100ms
+
+	// Look in snake left/right arrow
+
+	return true;
 }
 
 void Input::WaitForRetry()

@@ -1,4 +1,5 @@
-// Display
+#include "pipe.h"
+
 void Pipe::BuildPipe() 
 {
 
@@ -24,4 +25,19 @@ void Pipe::BuildPipe()
 		m_bufScreen[(int)(fBirdPosition + 1) * ScreenWidth() + nBirdX].Char.UnicodeChar != L' ' ||
 		m_bufScreen[(int)(fBirdPosition + 0) * ScreenWidth() + nBirdX + 6].Char.UnicodeChar != L' ' ||
 		m_bufScreen[(int)(fBirdPosition + 1) * ScreenWidth() + nBirdX + 6].Char.UnicodeChar != L' ';
+}
+
+
+void Pipe::Update(float fElapsedTime) 
+{
+	fLevelPosition += 14.0f * fElapsedTime;
+
+	if (fLevelPosition > fSectionWidth)
+	{
+		fLevelPosition -= fSectionWidth;
+		listSection.pop_front();
+		int i = rand() % (ScreenHeight() - 20);
+		if (i <= 10) i = 0;
+		listSection.push_back(i);
+	}
 }

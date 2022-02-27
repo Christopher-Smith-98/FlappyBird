@@ -35,15 +35,28 @@ void Bird::CheckCollision(Graphics graphics, Input& input)
 
 void Bird::Flap() 
 {
-	fBirdAcceleration = 0.0f;
-	fBirdVelocity = -fGravity / 4.0f;
-	nFlapCount++;
-	if (nFlapCount > nMaxFlapCount) {
-		nMaxFlapCount = nFlapCount;
+	if (fBirdVelocity >= minFallingVelocity) 
+	{
+		fBirdAcceleration = 0.0f;
+		fBirdVelocity = -fGravity / 4.0f;
+		nFlapCount++;
+		if (nFlapCount > nMaxFlapCount) {
+			nMaxFlapCount = nFlapCount;
+		}
 	}
 }
 
-void Bird::Fall(float fElapsedTime) 
+void Bird::Fall(float fElapsedTime)
 {
 	fBirdAcceleration += fGravity * fElapsedTime;
+	if (fBirdAcceleration >= fGravity) {
+		fBirdAcceleration = fGravity;
+	}
+}
+
+void Bird::Update(float fElapsedTime) {
+	Fall(fElapsedTime);
+	fBirdVelocity += fBirdAcceleration * fElapsedTime;
+	fBirdPosition += fBirdVelocity * fElapsedTime;
+
 }

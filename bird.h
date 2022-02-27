@@ -29,4 +29,5 @@ public:
 	void CheckCollision(Graphics graphics, Input& input);
 	void Flap();
 	void Fall(float fElapsedTime);
+	void Update(float fElapsedTime);
 };

@@ -24,20 +24,21 @@ int main()
 
 	while (1)
 	{
-
 		bird.Reset();
-		while (!bird.bHasCollided)
+		pipes.Reset();
+		while (!bird.bHasCollided) //ElapsedTime should be here
 		{
 			// Update Bird DirectionFlap
-			input.FlapWings(bird);
-			
+			if (input.SpacePressed()) {
+				bird.Flap();
+			}
+			//do everythings updates
 			bird.CheckCollision(graphics, input);
 
 			// Draw screen
 			graphics.Draw(bird);
 		}
 		input.WaitForRetry();
-		input.Reset();
 	}
 	return 0;
 }

@@ -2,7 +2,7 @@
 #include <list>
 
 // rename class and file to Pipes
-class Pipe 
+class Pipes
 {
 	float fLevelPosition;
 	float fSectionWidth;
@@ -10,4 +10,5 @@ class Pipe
 
 	// do reset function
 	void Update(float fElapsedTime);
+	void PickNewPipe();
 };

@@ -19,7 +19,7 @@ public:
 
 	void CreateBuffer(int wIn, int hIn);
 	void ClearScreen();
-	void DrawString(Bird bird);
+	void DrawString(int x, int y, string string);
 	void DrawBird(Bird bird);
 	void DrawPlayAgain(Bird bird);
 	void DisplayFrame();

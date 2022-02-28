@@ -17,7 +17,7 @@ void Bird::Reset()
 		fBirdAcceleration = 0.0f;
 		fBirdVelocity = 0.0f;
 
-		// pass screen height as arugment
+		// pass screen height as argument
 		fBirdPosition = ScreenHeight() / 2.0f;
 		nFlapCount = 0;
 		bResetGame = false;
@@ -27,9 +27,11 @@ void Bird::Reset()
 
 void Bird::CheckCollision(Graphics graphics)
 {
-	// ...
-
-	// Put the OLC code here... just reads from graphics.screen
+		bHasCollided = fBirdPosition < 2 || fBirdPosition > ScreenHeight() - 2 ||
+		m_bufScreen[(int)(fBirdPosition + 0) * ScreenWidth() + nBirdX].Char.UnicodeChar != L' ' ||
+		m_bufScreen[(int)(fBirdPosition + 1) * ScreenWidth() + nBirdX].Char.UnicodeChar != L' ' ||
+		m_bufScreen[(int)(fBirdPosition + 0) * ScreenWidth() + nBirdX + 6].Char.UnicodeChar != L' ' ||
+		m_bufScreen[(int)(fBirdPosition + 1) * ScreenWidth() + nBirdX + 6].Char.UnicodeChar != L' ';
 }
 
 void Bird::Flap() 
@@ -53,9 +55,9 @@ void Bird::Fall(float fElapsedTime)
 	}
 }
 
-void Bird::Update(float fElapsedTime) {
+void Bird::Update(float fElapsedTime) 
+{
 	Fall(fElapsedTime);
 	fBirdVelocity += fBirdAcceleration * fElapsedTime;
 	fBirdPosition += fBirdVelocity * fElapsedTime;
-
 }

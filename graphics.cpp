@@ -32,22 +32,22 @@ void Graphics::DrawString(int x, int y, string string)
 void Graphics::DrawBird(Bird bird) 
 {
 	// replace with bird.fBirdVelocity etc.
-	if (fBirdVelocity > 0)
+	if (bird.fBirdVelocity > 0)
 	{
-		DrawString(nBirdX, fBirdPosition + 0, L"\\\\\\");
-		DrawString(nBirdX, fBirdPosition + 1, L"<\\\\\\=Q");
+		DrawString(bird.nBirdX, bird.fBirdPosition + 0, L"\\\\\\");
+		DrawString(bird.nBirdX, bird.fBirdPosition + 1, L"<\\\\\\=Q");
 	}
 	else
 	{
-		DrawString(nBirdX, fBirdPosition + 0, L"<///=Q");
-		DrawString(nBirdX, fBirdPosition + 1, L"///");
+		DrawString(bird.nBirdX, bird.fBirdPosition + 0, L"<///=Q");
+		DrawString(bird.nBirdX, bird.fBirdPosition + 1, L"///");
 	}
 
-	DrawString(1, 1, L"Attempt: " + to_wstring(nAttemptCount) + L" Score: " + to_wstring(nFlapCount) + L" High Score: " + to_wstring(nMaxFlapCount));
+	DrawString(1, 1, L"Attempt: " + to_wstring(bird.nAttemptCount) + L" Score: " + to_wstring(bird.nFlapCount) + L" High Score: " + to_wstring(bird.nMaxFlapCount));
 }
 
 
-}
+
 
 
 void Fill(int x1, int x2, int y1, int y2, char fillChar) {
@@ -56,7 +56,7 @@ void Fill(int x1, int x2, int y1, int y2, char fillChar) {
 
 
 void Graphics::DrawPlayAgain(Bird bird) {
-	if (bird.bDead)
+	if (bird.bHasCollided)
 		wsprintf(&screen[15 * w + 40], L"    PRESS 'SPACE' TO PLAY AGAIN!    ");
 }
 
@@ -73,7 +73,30 @@ void Graphics::Draw(Bird bird)
 	DisplayFrame();
 }
 
+void Graphics::DrawPipes()
+{
 
+	// Replace with your own Fill function
+	Fill(0, 0, ScreenWidth(), ScreenHeight(), L' ');
+
+	// Draw Sections
+	int nSection = 0;
+	for (auto s : listSection)
+	{
+		if (s != 0)
+		{
+			Fill(nSection * fSectionWidth + 10 - fLevelPosition, ScreenHeight() - s, nSection * fSectionWidth + 15 - fLevelPosition, ScreenHeight(), PIXEL_SOLID, FG_GREEN);
+			Fill(nSection * fSectionWidth + 10 - fLevelPosition, 0, nSection * fSectionWidth + 15 - fLevelPosition, ScreenHeight() - s - 15, PIXEL_SOLID, FG_GREEN);
+		}
+		nSection++;
+	}
+
+	int nBirdX = (int)(ScreenWidth() / 3.0f);
+
+	// Collision Detection
+	// move to Bird.checkCollision
+	CheckCollision();
+}
 
 
 

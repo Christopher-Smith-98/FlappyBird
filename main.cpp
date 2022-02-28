@@ -37,7 +37,7 @@ int main()
 			// Call update functions
 			bird.Update(frameDelay);
 			pipes.Update(frameDelay);
-			bird.CheckCollision(graphics, input);
+			bird.CheckCollision(graphics);
 
 			// Draw screen
 			graphics.Draw(bird);

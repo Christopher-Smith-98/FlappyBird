@@ -9,14 +9,19 @@
 
 using namespace std;
 
-bool Input::AwaitSpacePress(float frameDelay)
+void Input::AwaitSpacePress(float frameDelay)
 {
 	// Wait some time! Idk, he's done this before in snake!
 
 	// Reuse GetAsyncKeyState, and look for a spacebar press
+	bKeySpace = ((0x8000 & GetAsyncKeyState((unsigned char)('\x20'))) == 0);
 
+	if (bKeySpace)
+	{
+		frameDelay;
+	}
 	// Wait 100ms
-
+	
 	// Look in snake left/right arrow
 
 	return true;

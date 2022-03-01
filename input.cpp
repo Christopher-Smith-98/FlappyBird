@@ -6,6 +6,7 @@
 #include <Windows.h>
 #include <list>
 #include "input.h"
+
 using namespace std;
 
 bool Input::AwaitSpacePress(float frameDelay)
@@ -26,3 +27,6 @@ void Input::WaitForRetry()
 	while ((0x8000 & GetAsyncKeyState((unsigned char)('\x20'))) == 0);
 }
 
+void Input::FlapWings()
+{
+}

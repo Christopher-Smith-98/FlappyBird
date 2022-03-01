@@ -5,7 +5,7 @@
 #include <string>
 #include <Windows.h>
 #include "bird.h"
-#include "pipe.h"
+#include "pipes.h"
 #include "input.h"
 #include "graphics.h"
 

@@ -1,7 +1,7 @@
 #pragma once
 #include <list>
 
-// rename class and file to Pipes
+
 class Pipes
 {
 	float fLevelPosition;
@@ -9,7 +9,7 @@ class Pipes
 	list<int> listSection;
 	float scrollSpeed = 14.0f;
 	
-	// do reset function
+	void Reset();
 	void Update(float fElapsedTime);
 	void PickNewPipe();
 };

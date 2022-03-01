@@ -1,4 +1,4 @@
-#include "pipe.h"
+#include "pipes.h"
 
 
 
@@ -20,4 +20,7 @@ void Pipes::PickNewPipe()
 	int i = rand() % (ScreenHeight() - 20);
 	if (i <= 10) i = 0;
 	listSection.push_back(i);
+}
+
+void Pipes::Reset() {
 }

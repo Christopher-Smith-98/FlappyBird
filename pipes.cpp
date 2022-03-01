@@ -1,6 +1,6 @@
 #include "pipe.h"
 
-float scrollSpeed = 14.0f;
+
 
 void Pipes::Update(float fElapsedTime) 
 {

@@ -143,13 +143,13 @@
     <ClCompile Include="graphics.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="pipe.cpp" />
+    <ClCompile Include="pipes.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bird.h" />
     <ClInclude Include="graphics.h" />
     <ClInclude Include="input.h" />
-    <ClInclude Include="pipe.h" />
+    <ClInclude Include="pipes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

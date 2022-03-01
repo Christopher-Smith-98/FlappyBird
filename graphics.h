@@ -24,6 +24,7 @@ public:
 	void DrawPlayAgain(Bird bird);
 	void DisplayFrame();
 	void Draw(Bird bird);
+	void DrawPipes();
 
 	void Fill(int x1, int x2, int y1, int y2, char fillChar);
 };

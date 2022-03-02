@@ -15,5 +15,5 @@ public:
 	void FlapWings(Bird bird);
 	void WaitForRetry();
 	void Reset();
-	void AwaitSpacePress(float frameDelay);
+	bool AwaitSpacePress(float frameDelay);
 };

@@ -15,7 +15,7 @@ bool Input::AwaitSpacePress(float frameDelay)
 
 	// Reuse GetAsyncKeyState, and look for a spacebar press
 
-	this_thread::sleep_for(100ms);
+	this_thread::sleep_for(scrollSpeed);
 	return (((0x8000 & GetAsyncKeyState((unsigned char)('\x20'))) == 0));
 	
 	

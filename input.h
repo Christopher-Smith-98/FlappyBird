@@ -3,6 +3,7 @@
 using namespace std;
 
 typedef chrono::milliseconds ms;
+ms scrollSpeed = 1ms;
 
 class Input
 {

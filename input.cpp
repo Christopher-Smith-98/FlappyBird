@@ -9,16 +9,23 @@
 
 using namespace std;
 
-bool Input::AwaitSpacePress(float frameDelay)
+bool Input::AwaitSpacePress(int fps)
 {
-	// Wait some time! Idk, he's done this before in snake!
+    // Poll for space every 1ms
+    for (int i = 0; i < int((1000.0 / speedFactor) / fps); i++) {
+        spaceHeld = (0x8000 & GetAsyncKeyState((unsigned char)('\x20')));
+        spacePressed |= spaceHeld && !spaceHeldLastFrame;
+        Sleep(1);
+    }
 
-	// Reuse GetAsyncKeyState, and look for a spacebar press
-
-	this_thread::sleep_for(scrollSpeed);
-	return (((0x8000 & GetAsyncKeyState((unsigned char)('\x20'))) == 0));
-	
-	
+    // Return true if waited long enough
+    sinceLastSpace += 1000.0 / fps;
+    bool validPress = spacePressed && sinceLastSpace > maxSpaceFrequency;
+    if (validPress) {
+        sinceLastSpace = 0;
+    }
+    spaceHeldLastFrame = spaceHeld;
+    return validPress;
 }
 
 void Input::WaitForRetry()

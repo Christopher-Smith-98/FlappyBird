@@ -25,6 +25,7 @@ void Graphics::ClearScreen() {
 void Graphics::DrawString(int x, int y, string string)
 {
 	// have a go at this function, 
+
 	// will be using the screen
 	screen[16] = string[0];
 }

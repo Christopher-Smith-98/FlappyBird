@@ -1,5 +1,3 @@
-// ALL IN SNAKE FORM 
-
 #pragma once
 #include <iostream>
 #include <thread>

@@ -22,12 +22,14 @@ void Graphics::ClearScreen() {
 
 }
 
-void Graphics::DrawString(int x, int y, string string)
+void Graphics::DrawString(int x, int y, string s)
 {
-	// have a go at this function, 
-
-	// will be using the screen
-	screen[16] = string[0];
+    int startPos = w * y + x;
+    for (int i = 0; i < s.length(); i++)
+    {
+        char c = s[i];
+        screen[startPos + i] = c;
+    }
 }
 
 void Graphics::DrawBird(Bird bird) 
@@ -51,8 +53,14 @@ void Graphics::DrawBird(Bird bird)
 
 
 
-void Fill(int x1, int x2, int y1, int y2, char fillChar) {
-	// have a go at making this
+void Fill(int x1, int x2, int y1, int y2, char c) {
+	for (int x = x1; x < x2; x++)
+	{
+		for (int y = y1; y < y2; y++)
+		{
+			screen[y * w + x] = c;
+		}
+	}
 }
 
 
@@ -78,22 +86,12 @@ void Graphics::DrawPipes()
 {
 
 	// Replace with your own Fill function
-	Fill(0, 0, ScreenWidth(), ScreenHeight(), L' ');
+	
 
-	// Draw Sections
-	int nSection = 0;
-	for (auto s : listSection)
-	{
-		if (s != 0)
-		{
-			Fill(nSection * fSectionWidth + 10 - fLevelPosition, ScreenHeight() - s, nSection * fSectionWidth + 15 - fLevelPosition, ScreenHeight(), PIXEL_SOLID, FG_GREEN);
-			Fill(nSection * fSectionWidth + 10 - fLevelPosition, 0, nSection * fSectionWidth + 15 - fLevelPosition, ScreenHeight() - s - 15, PIXEL_SOLID, FG_GREEN);
-		}
-		nSection++;
-	}
-
-	int nBirdX = (int)(ScreenWidth() / 3.0f);
-
+	int gap = 5;
+	int pipeW = 7;
+	Fill(x - pipeW, x + pipeW, 0, y - gap, 'X');
+	Fill(x - pipeW, x + pipeW, y + gap, h, 'X');
 	// Collision Detection
 	// move to Bird.checkCollision
 	CheckCollision();

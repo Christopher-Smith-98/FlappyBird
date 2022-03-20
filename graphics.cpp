@@ -90,8 +90,15 @@ void Graphics::DrawPipes()
 
 	int gap = 5;
 	int pipeW = 7;
-	Fill(x - pipeW, x + pipeW, 0, y - gap, 'X');
-	Fill(x - pipeW, x + pipeW, y + gap, h, 'X');
+	int pipeLipW = 2;
+	int pipeLipH = 1;
+
+	fill(x - pipeW, x + pipeW, 0, y - gap, '#');
+	fill(x - pipeW, x + pipeW, y + gap, h, '#');
+
+	fill(x - pipeW - pipeLipW, x + pipeW + pipeLipW, y - gap - pipeLipH, y - gap, '#');
+	fill(x - pipeW - pipeLipW, x + pipeW + pipeLipW, y + gap, y + gap + pipeLipH, '#');
+
 	// Collision Detection
 	// move to Bird.checkCollision
 	CheckCollision();

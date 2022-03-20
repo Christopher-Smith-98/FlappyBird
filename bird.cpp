@@ -35,7 +35,7 @@ void Bird::CheckCollision(Graphics graphics)
 
 void Bird::Flap() 
 {
-	if (yVelocity >= minFallingVelocity) 
+	if (false) //(yVelocity >= minFallingVelocity) 
 	{
 		yAcceleration = 0.0f;
 		yVelocity = -fGravity / 4.0f;
@@ -44,6 +44,7 @@ void Bird::Flap()
 			nMaxFlapCount = nFlapCount;
 		}
 	}
+	yPosition += 1;
 }
 
 void Bird::Fall(float fElapsedTime)

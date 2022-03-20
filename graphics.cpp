@@ -13,14 +13,14 @@ void Graphics::CreateBuffer(int wIn, int hIn) {
 	width = wIn;
 	height = hIn;
 	screen = new wchar_t[width * height];
-	for (int i = 0; i < width * height; i++) screen[i] = L' ';
+	ClearScreen();
 	hConsole = CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0, NULL, CONSOLE_TEXTMODE_BUFFER, NULL);
 	SetConsoleActiveScreenBuffer(hConsole);
 	dwBytesWritten = 0;
 }
 
 void Graphics::ClearScreen() {
-	// make it clear screen
+	for (int i = 0; i < width * height; i++) screen[i] = L' ';
 }
 
 void Graphics::DrawString(int x, int y, string s)

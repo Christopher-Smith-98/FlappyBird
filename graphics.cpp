@@ -3,6 +3,7 @@
 #include <iostream>
 #include <thread>
 #include <list>
+#include <string>
 #include "graphics.h"
 #include "bird.h"
 #include "input.h"
@@ -19,7 +20,7 @@ void Graphics::CreateBuffer(int wIn, int hIn) {
 }
 
 void Graphics::ClearScreen() {
-
+	// make it clear screen
 }
 
 void Graphics::DrawString(int x, int y, string s)

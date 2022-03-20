@@ -42,7 +42,7 @@ int main()
 			bird.CheckCollision(graphics);
 
 			// Check collision
-			bird.CheckCollision(graphics);
+		//	bird.CheckCollision(graphics);
 
 			// Draw screen
 			graphics.Draw(bird);

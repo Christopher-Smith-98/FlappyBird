@@ -30,7 +30,3 @@ void Input::WaitForRetry()
 {	// Wait for space
 	while ((0x8000 & GetAsyncKeyState((unsigned char)('\x20'))) == 0);
 }
-
-void Input::FlapWings()
-{
-}

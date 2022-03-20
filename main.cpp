@@ -11,6 +11,7 @@
 
 using namespace std;
 
+// Global settings
 int nScreenWidth = 120;
 int nScreenHeight = 30;
 float frameDelay = 100;   // milliseconds
@@ -26,7 +27,7 @@ int main()
 
 	while (1)
 	{
-		bird.Reset();
+		bird.Reset(nScreenHeight);
 		pipes.Reset();
 		while (!bird.bHasCollided) //ElapsedTime should be here
 		{
@@ -34,9 +35,13 @@ int main()
 			if (input.AwaitSpacePress(frameDelay)) {
 				bird.Flap();
 			}
+
 			// Call update functions
 			bird.Update(frameDelay);
 			pipes.Update(frameDelay);
+			bird.CheckCollision(graphics);
+
+			// Check collision
 			bird.CheckCollision(graphics);
 
 			// Draw screen

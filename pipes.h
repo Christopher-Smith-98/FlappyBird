@@ -1,9 +1,11 @@
 #pragma once
 #include <list>
 
+using namespace std;
 
 class Pipes
 {
+public:
 	float fLevelPosition;
 	float fSectionWidth;
 	list<int> listSection;
@@ -11,5 +13,5 @@ class Pipes
 	
 	void Reset();
 	void Update(float fElapsedTime);
-	void PickNewPipe();
+	void PickNewPipe(int screenHeight);
 };

@@ -8,17 +8,16 @@
 #include "input.h"
 using namespace std;
 
-void Bird::Reset()
+void Bird::Reset(int screenHeight)
 {
 	if (bResetGame)
 	{
 		bHasCollided = false;
 		bResetGame = false;
-		fBirdAcceleration = 0.0f;
-		fBirdVelocity = 0.0f;
-
-		// pass screen height as argument
-		fBirdPosition = ScreenHeight() / 2.0f;
+		yAcceleration = 0.0f;
+		yVelocity = 0.0f;
+		xPosition = 20;
+		yPosition = screenHeight / 2.0f;
 		nFlapCount = 0;
 		bResetGame = false;
 		nAttemptCount++;
@@ -27,19 +26,19 @@ void Bird::Reset()
 
 void Bird::CheckCollision(Graphics graphics)
 {
-		bHasCollided = fBirdPosition < 2 || fBirdPosition > ScreenHeight() - 2 ||
-		m_bufScreen[(int)(fBirdPosition + 0) * ScreenWidth() + nBirdX].Char.UnicodeChar != L' ' ||
-		m_bufScreen[(int)(fBirdPosition + 1) * ScreenWidth() + nBirdX].Char.UnicodeChar != L' ' ||
-		m_bufScreen[(int)(fBirdPosition + 0) * ScreenWidth() + nBirdX + 6].Char.UnicodeChar != L' ' ||
-		m_bufScreen[(int)(fBirdPosition + 1) * ScreenWidth() + nBirdX + 6].Char.UnicodeChar != L' ';
+	bHasCollided = yPosition < 2 || yPosition > graphics.height - 2 ||
+				   graphics.screen[(int)(yPosition + 0) * graphics.width + xPosition    ] != ' ' ||
+				   graphics.screen[(int)(yPosition + 1) * graphics.width + xPosition    ] != ' ' ||
+				   graphics.screen[(int)(yPosition + 0) * graphics.width + xPosition + 6] != ' ' ||
+				   graphics.screen[(int)(yPosition + 1) * graphics.width + xPosition + 6] != ' ';
 }
 
 void Bird::Flap() 
 {
-	if (fBirdVelocity >= minFallingVelocity) 
+	if (yVelocity >= minFallingVelocity) 
 	{
-		fBirdAcceleration = 0.0f;
-		fBirdVelocity = -fGravity / 4.0f;
+		yAcceleration = 0.0f;
+		yVelocity = -fGravity / 4.0f;
 		nFlapCount++;
 		if (nFlapCount > nMaxFlapCount) {
 			nMaxFlapCount = nFlapCount;
@@ -49,15 +48,16 @@ void Bird::Flap()
 
 void Bird::Fall(float fElapsedTime)
 {
-	fBirdAcceleration += fGravity * fElapsedTime;
-	if (fBirdAcceleration >= fGravity) {
-		fBirdAcceleration = fGravity;
+	yAcceleration += fGravity * fElapsedTime;
+	if (yAcceleration >= fGravity) {
+		yAcceleration = fGravity;
 	}
 }
 
-void Bird::Update(float fElapsedTime) 
+void Bird::Update(float fElapsedTime)   // <== 100 instead of 0.01
 {
-	Fall(fElapsedTime);
-	fBirdVelocity += fBirdAcceleration * fElapsedTime;
-	fBirdPosition += fBirdVelocity * fElapsedTime;
+	// totally broken
+	//Fall(fElapsedTime);
+	//yVelocity += yAcceleration * fElapsedTime;
+	//yPosition += yVelocity * fElapsedTime;
 }

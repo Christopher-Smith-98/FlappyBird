@@ -1,9 +1,9 @@
 #pragma once
 
-using namespace std;
+// forward declarations
+class Bird;
 
-typedef chrono::milliseconds ms;
-ms scrollSpeed = 1ms;
+using namespace std;
 
 class Input
 {
@@ -21,8 +21,6 @@ public:
     bool spaceHeld = false;
     float speedFactor = 10;
 
-
-	void FlapWings(Bird bird);
 	void WaitForRetry();
 	void Reset();
 	bool AwaitSpacePress(int fps);

@@ -13,18 +13,20 @@ public:
 	const float fGravity = 100.0f;
 	const float minFallingVelocity = fGravity / 10.0f;
 
-	int nBirdX;
-	float fBirdPosition;
-	float fBirdVelocity;
-	float fBirdAcceleration;
+	int   xPosition;
+	float yPosition;
+	float yVelocity;
+	float yAcceleration;
 	bool bHasCollided = false;
 	
-	int nMaxFlapCount = 0;
-	int nAttemptCount;
 	int nFlapCount;
 	bool bResetGame;
 
-	void Reset();
+	// Never changed after startup
+	int nMaxFlapCount = 0;
+	int nAttemptCount = 0;
+
+	void Reset(int screenHeight);
 	void CheckCollision(Graphics graphics);
 	void Flap();
 	void Fall(float fElapsedTime);

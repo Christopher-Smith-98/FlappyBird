@@ -1,5 +1,3 @@
-//ALL IN SNAKE FORM
-
 #include <iostream>
 #include <thread>
 #include <list>

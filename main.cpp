@@ -41,7 +41,7 @@ int main()
 			pipes.Update(frameDelay);
 
 			// Check collision
-			//bird.CheckCollision(graphics);
+			bird.CheckCollision(graphics);
 
 			// Draw screen
 			graphics.Draw(bird);

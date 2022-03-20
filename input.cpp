@@ -9,6 +9,7 @@ using namespace std;
 
 bool Input::AwaitSpacePress(int fps)
 {
+    bool spacePressed = false;
     // Poll for space every 1ms
     for (int i = 0; i < int((1000.0 / speedFactor) / fps); i++) {
         spaceHeld = (0x8000 & GetAsyncKeyState((unsigned char)('\x20')));

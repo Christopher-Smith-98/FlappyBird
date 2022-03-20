@@ -17,7 +17,7 @@ public:
     float maxSpaceFrequency = 250;
     bool spaceHeldLastFrame = false;
 	int fps = 60;
-	bool spacePressed = false;
+
     bool spaceHeld = false;
     float speedFactor = 10;
 

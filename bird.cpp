@@ -26,16 +26,17 @@ void Bird::Reset(int screenHeight)
 
 void Bird::CheckCollision(Graphics graphics)
 {
-	bHasCollided = yPosition < 2 || yPosition > graphics.height - 2 ||
-				   graphics.screen[(int)(yPosition + 0) * graphics.width + xPosition    ] != ' ' ||
-				   graphics.screen[(int)(yPosition + 1) * graphics.width + xPosition    ] != ' ' ||
-				   graphics.screen[(int)(yPosition + 0) * graphics.width + xPosition + 6] != ' ' ||
-				   graphics.screen[(int)(yPosition + 1) * graphics.width + xPosition + 6] != ' ';
+
+	bHasCollided = yPosition < 2 || yPosition > graphics.height - 2; // ||
+	//			   graphics.screen[(int)(yPosition + 0) * graphics.width + xPosition    ] != ' ' ||
+	//			   graphics.screen[(int)(yPosition + 1) * graphics.width + xPosition    ] != ' ' ||
+	//			   graphics.screen[(int)(yPosition + 0) * graphics.width + xPosition + 6] != ' ' ||
+	//			   graphics.screen[(int)(yPosition + 1) * graphics.width + xPosition + 6] != ' ';
 }
 
 void Bird::Flap() 
 {
-	if (false) //(yVelocity >= minFallingVelocity) 
+	if (yVelocity >= minFallingVelocity) 
 	{
 		yAcceleration = 0.0f;
 		yVelocity = -fGravity / 4.0f;
@@ -44,7 +45,6 @@ void Bird::Flap()
 			nMaxFlapCount = nFlapCount;
 		}
 	}
-	yPosition += 1;
 }
 
 void Bird::Fall(float fElapsedTime)
@@ -55,10 +55,10 @@ void Bird::Fall(float fElapsedTime)
 	}
 }
 
-void Bird::Update(float fElapsedTime)   // <== 100 instead of 0.01
+void Bird::Update(float fElapsedTime) 
 {
-	// totally broken
-	//Fall(fElapsedTime);
-	//yVelocity += yAcceleration * fElapsedTime;
-	//yPosition += yVelocity * fElapsedTime;
+	fElapsedTime /= 10000.0f;
+	Fall(fElapsedTime);
+	yVelocity += yAcceleration * fElapsedTime;
+	yPosition += yVelocity * fElapsedTime;
 }

@@ -16,6 +16,8 @@ int nScreenWidth = 120;
 int nScreenHeight = 30;
 float frameDelay = 100;   // milliseconds
 
+
+
 int main()
 {
 	Input input;
@@ -26,7 +28,8 @@ int main()
 	graphics.CreateBuffer(nScreenWidth, nScreenHeight);
 
 	while (1)
-	{
+	{	
+	
 		bird.Reset(nScreenHeight);
 		pipes.Reset();
 		while (!bird.bHasCollided) //ElapsedTime should be here
@@ -45,6 +48,7 @@ int main()
 
 			// Draw screen
 			graphics.Draw(bird);
+			graphics.DrawPipes(nScreenHeight);
 		}
 		input.WaitForRetry();
 	}

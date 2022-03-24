@@ -33,7 +33,6 @@ void Graphics::DrawString(int x, int y, string s)
 
 void Graphics::DrawBird(Bird bird) 
 {
-	// replace with bird.fBirdVelocity etc.
 	if (bird.yVelocity > 0)
 	{
 		DrawString(bird.xPosition, bird.yPosition + 0, "\\\\\\");
@@ -67,32 +66,30 @@ void Graphics::DisplayFrame() {
 	WriteConsoleOutputCharacter(hConsole, screen, width * height, { 0,0 }, &dwBytesWritten);
 }
 
+void Graphics::DrawPipes(int h)
+{
+	int gap = 5;
+	int pipeW = 7;
+	int pipeLipW = 2;
+	int pipeLipH = 1;
+	int pipeX = 10;
+	int pipeY = 15;
+
+	// todo: loop over all pipes in game and 
+
+	Fill(pipeX - pipeW, pipeX + pipeW, 0, pipeY - gap, '#');
+	Fill(pipeX - pipeW, pipeX + pipeW, pipeY + gap, h, '#');
+
+	Fill(pipeX - pipeW - pipeLipW, pipeX + pipeW + pipeLipW, pipeY - gap - pipeLipH, pipeY - gap, '#');
+	Fill(pipeX - pipeW - pipeLipW, pipeX + pipeW + pipeLipW, pipeY + gap, pipeY + gap + pipeLipH, '#');
+}
+
 void Graphics::Draw(Bird bird)
 {
 	ClearScreen();
 	DrawBird(bird);
 	DrawPlayAgain(bird);
 	DisplayFrame();
-}
-
-void Graphics::DrawPipes()
-{
-
-	// Replace with your own Fill function
-	
-
-	int gap = 5;
-	int pipeW = 7;
-	int pipeLipW = 2;
-	int pipeLipH = 1;
-
-
-	// todo: loop over all pipes in game and 
-	//       use their x, y coordinates to draw the pipes
-	//Fill(x - pipeW, x + pipeW, 0, y - gap, '#');
-	//Fill(x - pipeW, x + pipeW, y + gap, height, '#');
-	//Fill(x - pipeW - pipeLipW, x + pipeW + pipeLipW, y - gap - pipeLipH, y - gap, '#');
-	//Fill(x - pipeW - pipeLipW, x + pipeW + pipeLipW, y + gap, y + gap + pipeLipH, '#');
 }
 
 

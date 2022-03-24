@@ -26,7 +26,6 @@ void Bird::Reset(int screenHeight)
 
 void Bird::CheckCollision(Graphics graphics)
 {
-
 	bHasCollided = yPosition < 2 || yPosition > graphics.height - 2; // ||
 	//			   graphics.screen[(int)(yPosition + 0) * graphics.width + xPosition    ] != ' ' ||
 	//			   graphics.screen[(int)(yPosition + 1) * graphics.width + xPosition    ] != ' ' ||

@@ -22,7 +22,7 @@ public:
 	void DisplayFrame();
 
 	void Draw(Bird bird);
-	void DrawPipes();
+	void DrawPipes(int height);
 	void DrawBird(Bird bird);
 	void DrawPlayAgain(Bird bird);
 	void DrawString(int x, int y, string string);

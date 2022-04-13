@@ -44,7 +44,7 @@ void Graphics::DrawBird(Bird bird)
 		DrawString(bird.xPosition, bird.yPosition + 1, "///");
 	}
 
-	DrawString(1, 1, "Attempt: " + to_string(bird.nAttemptCount) + " Score: " + to_string(bird.nFlapCount) + " High Score: " + to_string(bird.nMaxFlapCount));
+	DrawString(1, 1, "Attempt: " + to_string(bird.nAttemptCount) + "    Score: " + to_string(bird.nFlapCount) + "    High Score: " + to_string(bird.nMaxFlapCount));
 }
 
 void Graphics::Fill(int x1, int x2, int y1, int y2, char c) {

@@ -29,7 +29,6 @@ int main()
 
 	while (1)
 	{	
-	
 		bird.Reset(nScreenHeight);
 		pipes.Reset();
 		while (!bird.bHasCollided) //ElapsedTime should be here

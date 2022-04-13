@@ -20,7 +20,6 @@ public:
 	bool bHasCollided = false;
 	
 	int nFlapCount;
-	bool bResetGame;
 
 	// Never changed after startup
 	int nMaxFlapCount = 0;

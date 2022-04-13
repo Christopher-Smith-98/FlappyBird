@@ -10,18 +10,13 @@ using namespace std;
 
 void Bird::Reset(int screenHeight)
 {
-	if (bResetGame)
-	{
-		bHasCollided = false;
-		bResetGame = false;
-		yAcceleration = 0.0f;
-		yVelocity = 0.0f;
-		xPosition = 20;
-		yPosition = screenHeight / 2.0f;
-		nFlapCount = 0;
-		bResetGame = false;
-		nAttemptCount++;
-	}
+	bHasCollided = false;
+	yAcceleration = 0.0f;
+	yVelocity = 0.0f;
+	xPosition = 20;
+	yPosition = screenHeight / 2.0f;
+	nFlapCount = 0;
+	nAttemptCount++;
 }
 
 void Bird::CheckCollision(Graphics graphics)

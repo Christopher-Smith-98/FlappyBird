@@ -29,5 +29,15 @@ bool Input::AwaitSpacePress(int fps)
 
 void Input::WaitForRetry()
 {	// Wait for space
-	while ((0x8000 & GetAsyncKeyState((unsigned char)('\x20'))) == 0);
+    Sleep(100);
+    bool spacePressed = false;
+
+    while (!spacePressed)
+    {
+       short space = GetAsyncKeyState((unsigned char)('\x20'));
+       if((0x8000 & space) != 0) 
+       {
+           spacePressed = true;
+       }
+    }
 }
